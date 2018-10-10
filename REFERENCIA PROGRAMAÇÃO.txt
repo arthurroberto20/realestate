@@ -1,0 +1,14 @@
+https://www.codeofaninja.com/2013/03/php-login-script.html
+
+FIX mail server localhost
+http://phpbrasil.com/phorum/read.php?1,107532
+
+
+
+Admin Section Login
+Username: mike@example.com
+Password: ninja12qw!@QW
+
+Customer Account Login
+Username: darwin@example.com
+Password: darwin12qw!@QW
