@@ -19,6 +19,9 @@ class User{
     public $status;
     public $created;
     public $modified;
+    public $favlist;
+
+
  
     // constructor
     public function __construct($db){

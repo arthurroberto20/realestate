@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
 	// When someone clicks on one of the links...
-	$("nav > a").click(function(event) {
+	$(".imoveisfav").click(function(event) {
 		event.preventDefault();
 		var $this = $(this);
 		// Grab the ID from the data inside the link
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 	function checkwishlist() {
 		// This function adds an active state to any items it finds that are in the cookie.
-		$("nav > a").each(function() {
+		$(".imoveisfav").each(function() {
 			var $this = $(this);
 			var $thisID = $this.data('id');
 
@@ -62,4 +62,54 @@ $(document).ready(function() {
 	}
 	// When the page is loaded, before doing anything just check to see if anything should have the active state added.
 	checkwishlist();
+	
 });
+
+$(document).ready(
+    function(){
+		$('.item .imoveisfav').click(
+          function(){
+			var $this = $(this);
+			var $thisID = $this.data('id');
+
+            var objectImage = $(this).parents('.item').find(".img").html();
+            var objectName = $(this).parents('.item').find(".title").html();
+			var objectPrice = $(this).parents('.item').find(".price").html();
+			$unstrung = $.parseJSON(Cookies.get('wishlist'));
+			var found = $.inArray($thisID, $unstrung);
+			/*var data = $("#form-search").serialize();*/
+			if (Cookies.get('wishlist')){
+if (this.className == 'imoveisfav active') {
+	
+   $('#favlist').append('<div class="item row"><div class="img col-sm-3">'+ objectImage +'</div><div class="name col-sm-9"><p>'+ objectName +'</p><p>'+ objectPrice +'</p><div></div>');
+	$.ajax({
+		   data: $thisID,
+		   type: "post",
+		   url: "savefav.php",
+		   success: function($thisID){
+				alert("Data Save: " + $thisID);
+		   }
+  }
+  );
+   ;
+			}
+			else if (this.className == 'imoveisfav') {
+				var list = document.getElementById("favlist");   // Get the <ul> element with id="myList"
+				list.removeChild(list.childNodes[0])
+			}
+			
+			else  {
+				
+				alert("deu ruim maluco");
+
+				}
+			}
+		 }
+			
+	  );
+	 
+      
+
+	}
+	
+);

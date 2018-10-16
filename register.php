@@ -35,7 +35,7 @@ if($_POST){
     // check if email already exists
     if($user->emailExists()){
         echo "<div class='alert alert-danger'>";
-            echo "The email you specified is already registered. Please try again or <a href='{$home_url}login'>login.</a>";
+            echo " O e-mail que você especificou já está registrado. Por favor tente novamente ou <a href='{$home_url}login'>login.</a>";
         echo "</div>";
     }
  
@@ -59,19 +59,19 @@ if($user->create()){
  
     // send confimation email
     $send_to_email=$_POST['email'];
-    $body="Hi {$send_to_email}.<br /><br />";
-    $body.="Please click the following link to verify your email and login: {$home_url}verify/?access_code={$access_code}";
+    $body="Olá {$send_to_email}.<br /><br />";
+    $body.="Por favor clique no link para verificar seu e-mail e fazer login: {$home_url}verify/?access_code={$access_code}";
     $subject="Verification Email";
  
     if($utils->sendEmailViaPhpMail($send_to_email, $subject, $body)){
         echo "<div class='alert alert-success'>
-            Verification link was sent to your email. Click that link to login.
+            Link de verificação foi enviado ao seu e-mail. Clique no link para fazer login.
         </div>";
     }
  
     else{
         echo "<div class='alert alert-danger'>
-            User was created but unable to send verification email. Please contact admin.
+            Usuário foi criado mas não foi possível enviar o e-mail de verificação. Por favor Contate o Admin.
         </div>";
     }
  
@@ -79,7 +79,7 @@ if($user->create()){
     $_POST=array();
  
 }else{
-    echo "<div class='alert alert-danger' role='alert'>Unable to register. Please try again.</div>";
+    echo "<div class='alert alert-danger' role='alert'>Não foi possível registrar. Por favor tente novamente. </div>";
 }
     }
 }
